@@ -8,37 +8,34 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="lib/jquery-jsonp-2.2.1.min.js"></script>
 	<script src="lib/github.js"></script>
+	<script src="lib/githubApiV3.js"></script>
 
 	<script type="text/javascript">
 		function toto(){
 			console.log("toto");
-
-            this.toto = "bouya";
-
-            $.ajax({
-              url: "https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=1",
-              dataType:  'jsonp',
-              context: this,
-              success: function( data ) {
-                  console.log("aaa" + this.toto);
-              },
-              error: function(data,msg) {
-                  console.log("Could not find " + data["branch"] + " - " + msg);
-              }
-            });
+			
+            console.log( "contexte " + this );
+            gh3.repo("mozilla","addon-sdk").collaboratorsDetailed( this, function(data){console.log(data); console.log( "contexte " + this );} );
+  
+            gh.repo("mozilla","addon-sdk").collaborators( function(data){console.log(data)}, this );
+            
+            gh3.userDetails("ochameau", this, function(data){ console.log(data)});
+            
+            gh3.repo("mozilla","addon-sdk").collaborators( this, function(data){console.log(data)} );
+            
+            gh3.repo("mozilla","addon-sdk").commits( 1, 100, this, function( data ){ console.log(data) } );
 
            
             $.jsonp({
               url: "https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2&callback=?",
               context: this,
-              success: function() {
-                  console.log("aaa");
+              success: function( data ) {
+                  console.log( data );
               },
               error: function(d, msg) {
-                  console.log("Could not find " + this.toto + " - " + msg);
+                  console.log("Could not find truc " + msg);
               }
             });
-
 		}
 	</script>
 </body>
