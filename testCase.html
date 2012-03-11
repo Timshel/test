@@ -15,7 +15,11 @@
 			console.log("toto");
 			
             console.log( "contexte " + this );
-            gh3.repo("mozilla","addon-sdk").collaboratorsDetailed( this, function(data){console.log(data); console.log( "contexte " + this );} );
+            gh3.repo("mozilla","addon-sdk").collaboratorsDetailed( this, function(data){ console.log("mozilla/addon-sdk"); console.log(data); console.log( "contexte " + this );} );
+            
+            gh3.repo("sstephenson","prototype").collaboratorsDetailed( this, function(data){console.log("sstephenson/prototype");console.log(data); } );   
+            
+            gh3.repo("mozilla","rust").collaboratorsDetailed( this, function(data){console.log("mozilla/rust");console.log(data); } ); 
   
             gh.repo("mozilla","addon-sdk").collaborators( function(data){console.log(data)}, this );
             
