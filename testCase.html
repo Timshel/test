@@ -13,32 +13,50 @@
 		function toto(){
 			console.log("toto");
 
-            		
+            /*		
 			var url = 'https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2';
 			
 			url+= '&callback=?'
 			$.get(url, function(data) {
                 console.log( data );
             });
-            
+           */ 
 			
 			$.getJSON( 'https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=1', function( json ) {console.log( json )} );
 
+			$.getJSON( 'https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2', function( json ) {console.log( json )} );
+           
+
+			$.ajax({
+				url: "https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=1",
+				success: function( response ){
+				    console.log( "Ajax1" );
+				    console.log( response );
+  				},
+  				error: function(){ console.log("Error1" ) };
+ 				statusCode: {
+ 				    404: function(){
+ 				        console.log( "Ajax 1 404" );
+ 				    }
+ 				}
+			});
 
 			
 			$.ajax({
 				url: "https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2",
 				success: function( response ){
+				    console.log( "Ajax" );
 				    console.log( response );
   				},
+  				error: function(){ console.log("Error 2" ) };
  				statusCode: {
  				    404: function(){
- 				        console.log("failed but success");
+ 				        console.log( "Ajax 2 404" );
  				    }
  				}
 			});
 
-			gh.commit.forBranch( "sourcemint", "platform-mozilla-addon-sdk", "master?page=2", function(response){console.log(response)}, {} );
+			//gh.commit.forBranch( "sourcemint", "platform-mozilla-addon-sdk", "master?page=2", function(response){console.log(response)}, {} );
 		}
 	</script>
 </body>
