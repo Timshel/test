@@ -12,23 +12,10 @@
 	<script type="text/javascript">
 		function toto(){
 			console.log("toto");
-
-            /*		
-			var url = 'https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2';
-			
-			url+= '&callback=?'
-			$.get(url, function(data) {
-                console.log( data );
-            });
-           */ 
-			
-			$.getJSON( 'https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=1', function( json ) {console.log( json )} );
-
-			$.getJSON( 'https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2', function( json ) {console.log( json )} );
            
-
 			$.ajax({
 				url: "https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=1",
+				dataType: "jsonp",
 				success: function( response ){
 				    console.log( "Ajax1" );
 				    console.log( response );
@@ -44,6 +31,7 @@
 			
 			$.ajax({
 				url: "https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2",
+				dataType: "jsonp",
 				success: function( response ){
 				    console.log( "Ajax2" );
 				    console.log( response );
