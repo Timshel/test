@@ -33,7 +33,7 @@
 				    console.log( "Ajax1" );
 				    console.log( response );
   				},
-  				error: function(){ console.log("Error1" ) };
+  				error: function(){ console.log("Error1" ) },
  				statusCode: {
  				    404: function(){
  				        console.log( "Ajax 1 404" );
@@ -45,10 +45,10 @@
 			$.ajax({
 				url: "https://github.com/api/v2/json/commits/list/sourcemint/platform-mozilla-addon-sdk/master?page=2",
 				success: function( response ){
-				    console.log( "Ajax" );
+				    console.log( "Ajax2" );
 				    console.log( response );
   				},
-  				error: function(){ console.log("Error 2" ) };
+  				error: function(){ console.log("Error 2" ) },
  				statusCode: {
  				    404: function(){
  				        console.log( "Ajax 2 404" );
